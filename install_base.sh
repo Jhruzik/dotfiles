@@ -1,6 +1,15 @@
 # Create Folders
 mkdir ~/Development ~/Downloads ~/.config
 
+# Move Configs
+# Copy Configuration Files
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+NVIM_DIR="$SCRIPT_DIR/nvim"
+TMUX_DIR="$SCRIPT_DIR/tmux"
+I3_DIR="$SCRIPT_DIR/i3"
+I3STATUS_DIR="$SCRIPT_DIR/i3status"
+mv "$NVIM_DIR" "$TMUX_DIR" "$I3_DIR" "$I3STATUS_DIR" ~/.config/
+
 # Install Base Packages
 sudo apt update
 sudo apt upgrade -y
@@ -42,18 +51,18 @@ sudo rm -rf /usr/local/sbt
 sudo tar -C /usr/local -xzf ~/Downloads/sbt-${version_sbt}.tgz
 rm ~/Downloads/sbt-${version_sbt}.tgz
 
-# Install Vundle
-git clone https://github.com/VundleVim/Vundle.vim.git ~/.config/nvim/bundle/Vundle.vim
-
-# Install TPM
-git clone https://github.com/tmux-plugins/tpm ~/.config/tmux/plugins/tpm
-
 # Install Protobuffer
 version_protoc="29.3"
 sudo rm -rf /usr/local/protoc
 wget https://github.com/protocolbuffers/protobuf/releases/download/v${version_protoc}/protoc-${version_protoc}-linux-x86_64.zip -P ~/Downloads/
 sudo unzip ~/Downloads/protoc-${version_protoc}-linux-x86_64.zip -d /usr/local/protoc
 rm ~/Downloads/protoc-${version_protoc}-linux-x86_64.zip
+
+# Install Plugins
+git clone https://github.com/VundleVim/Vundle.vim.git ~/.config/nvim/bundle/Vundle.vim
+git clone https://github.com/tmux-plugins/tpm ~/.config/tmux/plugins/tpm
+nvim +PluginInstall +qall
+~/.config/tmux/plugins/tpm/scripts/install_plugins.sh
 
 # Create Python Development Environment
 rm -rf ~/Development/python-dev
@@ -63,14 +72,6 @@ $HOME/Development/python-dev/bin/pip install numpy scipy sympy pandas polars \
 		fastapi[standard] langchain dash matplotlib seaborn pymongo \
 		scikit-learn tensorflow Flask requests pynvim neovim \
 		build pytest setuptools ipython[terminal]
-
-# Copy Configuration Files
-SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-FOLDERNVIM="$SCRIPT_DIR/nvim"
-FOLDERTMUX="$SCRIPT_DIR/tmux"
-FOLDERI3="$SCRIPT_DIR/i3"
-FOLDERI3STATUS="$SCRIPT_DIR/i3status"
-mv "$FOLDERNVIM" "$FOLDERTMUX" "$FOLDERI3" "$FOLDERI3STATUS" ~/.config/
 
 # Configure Git
 git config --global user.name "Name"
