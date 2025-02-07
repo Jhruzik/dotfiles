@@ -1,5 +1,5 @@
 # Create Folders
-mkdir ~/Development ~/Downloads
+mkdir ~/Development ~/Downloads ~/.config
 
 # Install Base Packages
 sudo apt update
@@ -43,7 +43,10 @@ sudo tar -C /usr/local -xzf ~/Downloads/sbt-${version_sbt}.tgz
 rm ~/Downloads/sbt-${version_sbt}.tgz
 
 # Install Vundle
-git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+git clone https://github.com/VundleVim/Vundle.vim.git ~/.config/nvim/bundle/Vundle.vim
+
+# Install TPM
+git clone https://github.com/tmux-plugins/tpm ~/.config/tmux/plugins/tpm
 
 # Install Protobuffer
 version_protoc="29.3"
@@ -60,6 +63,14 @@ $HOME/Development/python-dev/bin/pip install numpy scipy sympy pandas polars \
 		fastapi[standard] langchain dash matplotlib seaborn pymongo \
 		scikit-learn tensorflow Flask requests pynvim neovim \
 		build pytest setuptools ipython[terminal]
+
+# Copy Configuration Files
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+FOLDERNVIM="$SCRIPT_DIR/nvim"
+FOLDERTMUX="$SCRIPT_DIR/tmux"
+FOLDERI3="$SCRIPT_DIR/i3"
+FOLDERI3STATUS="$SCRIPT_DIR/i3status"
+mv "$FOLDERNVIM" "$FOLDERTMUX" "$FOLDERI3" "$FOLDERI3STATUS" ~/.config/
 
 # Configure Git
 git config --global user.name "Name"
