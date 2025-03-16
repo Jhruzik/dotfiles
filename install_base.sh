@@ -14,7 +14,7 @@ mv "$NVIM_DIR" "$TMUX_DIR" "$I3_DIR" "$I3STATUS_DIR" ~/.config/
 sudo apt update
 sudo apt upgrade -y
 sudo apt install -y git htop neovim tmux wget python3 python3-venv \
-         openjdk-17-jdk nodejs npm zip fonts-powerline \
+         openjdk-17-jdk nodejs npm zip fonts-powerline newsboat \
 		 ca-certificates curl gnupg apt-transport-https
 
 # Add Package Repositories
