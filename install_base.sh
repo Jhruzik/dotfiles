@@ -4,11 +4,7 @@ mkdir ~/Development ~/Downloads ~/.config
 # Move Configs
 # Copy Configuration Files
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-NVIM_DIR="$SCRIPT_DIR/nvim"
-TMUX_DIR="$SCRIPT_DIR/tmux"
-I3_DIR="$SCRIPT_DIR/i3"
-I3STATUS_DIR="$SCRIPT_DIR/i3status"
-mv "$NVIM_DIR" "$TMUX_DIR" "$I3_DIR" "$I3STATUS_DIR" ~/.config/
+mv $SCRIPT_DIR/config/* ~/.config/
 
 # Install Base Packages
 sudo apt update
