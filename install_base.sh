@@ -74,3 +74,7 @@ git config --global user.name "Name"
 git config --global user.email "Email"
 git config --global core.editor "nvim"
 git config --global credential.useHttpPath true
+
+# Add Alias and Environment Variables to Profile
+printf "\n\n" >> $HOME/.profile
+cat $SCRIPT_DIR/alias.txt >> $HOME/.profile
