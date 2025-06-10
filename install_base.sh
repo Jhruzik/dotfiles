@@ -7,52 +7,16 @@ SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 mv $SCRIPT_DIR/config/* ~/.config/
 
 # Install Base Packages
-sudo apt update
-sudo apt upgrade -y
-sudo apt install -y git htop neovim tmux wget python3 python3-venv \
-         openjdk-17-jdk nodejs npm zip fonts-powerline newsboat \
-		 ca-certificates curl gnupg apt-transport-https
-
-# Add Package Repositories
-## Microsoft
-wget https://packages.microsoft.com/config/debian/12/packages-microsoft-prod.deb -O packages-microsoft-prod.deb
-sudo dpkg -i packages-microsoft-prod.deb
-rm packages-microsoft-prod.deb
-
-## Docker
-sudo install -m 0755 -d /etc/apt/keyrings
-sudo curl -fsSL https://download.docker.com/linux/debian/gpg -o /etc/apt/keyrings/docker.asc
-sudo chmod a+r /etc/apt/keyrings/docker.asc
-echo \
-  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/debian \
-  $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
-  sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-
-# Install Additonal Packages
-sudo apt update
-sudo apt install -y docker-ce docker-ce-cli containerd.io \
-		docker-buildx-plugin docker-compose-plugin
-
-# Install Go
-version_go="1.23.6"
-wget https://go.dev/dl/go${version_go}.linux-amd64.tar.gz -P ~/Downloads
-sudo rm -rf /usr/local/go
-sudo tar -C /usr/local -xzf ~/Downloads/go${version_go}.linux-amd64.tar.gz
-rm ~/Downloads/go${version_go}.linux-amd64.tar.gz
-
+sudo dnf update
+sudo dnf install -y git htop neovim tmux wget python3 python3-devel python3-pip \
+        golang java-latest-openjdk nodejs npm docker-cli containerd docker-compose \
+        protobuf zip newsboat dnf-plugins-core ca-certificates curl gnupg apt-transport-https
+		
 # Install SBT
-version_sbt="1.10.7"
-wget https://github.com/sbt/sbt/releases/download/v${version_sbt}/sbt-${version_sbt}.tgz -P ~/Downloads
-sudo rm -rf /usr/local/sbt
-sudo tar -C /usr/local -xzf ~/Downloads/sbt-${version_sbt}.tgz
-rm ~/Downloads/sbt-${version_sbt}.tgz
-
-# Install Protobuffer
-version_protoc="29.3"
-sudo rm -rf /usr/local/protoc
-wget https://github.com/protocolbuffers/protobuf/releases/download/v${version_protoc}/protoc-${version_protoc}-linux-x86_64.zip -P ~/Downloads/
-sudo unzip ~/Downloads/protoc-${version_protoc}-linux-x86_64.zip -d /usr/local/protoc
-rm ~/Downloads/protoc-${version_protoc}-linux-x86_64.zip
+sudo rm -f /etc/yum.repos.d/bintray-rpm.repo
+curl -L https://www.scala-sbt.org/sbt-rpm.repo > sbt-rpm.repo
+sudo mv sbt-rpm.repo /etc/yum.repos.d/
+sudo dnf install sbt
 
 # Install Plugins
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.config/nvim/bundle/Vundle.vim
@@ -62,19 +26,21 @@ nvim +PluginInstall +qall
 
 # Create Python Development Environment
 rm -rf ~/Development/python-dev
-python3 -m venv ~/Development/python-dev
+python -m venv ~/Development/python-dev
 $HOME/Development/python-dev/bin/pip install --upgrade pip
 $HOME/Development/python-dev/bin/pip install numpy scipy sympy pandas polars \
 		fastapi[standard] langchain dash matplotlib seaborn pymongo \
-		scikit-learn tensorflow Flask requests pynvim neovim \
+		scikit-learn Flask requests pynvim neovim \
 		build pytest setuptools ipython[terminal]
-
+		
 # Configure Git
-git config --global user.name "Name"
-git config --global user.email "Email"
+read -p "Enter Name for Git: " NAMEGIT
+read -p "Enter Email for Git: " EMAILGIT
+git config --global user.name $NAMEGIT
+git config --global user.email $EMAILGIT
 git config --global core.editor "nvim"
 git config --global credential.useHttpPath true
 
 # Add Alias and Environment Variables to Profile
-printf "\n\n" >> $HOME/.profile
-cat $SCRIPT_DIR/alias.txt >> $HOME/.profile
+printf "\n\n" >> $HOME/.bash_profile
+cat $SCRIPT_DIR/alias.txt >> $HOME/.bash_profile
