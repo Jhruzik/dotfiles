@@ -31,6 +31,7 @@ Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'jpalardy/vim-slime'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
+Plugin 'ellisonleao/gruvbox.nvim'
 
 Plugin 'davidhalter/jedi-vim'
 Plugin 'nvie/vim-flake8'
@@ -51,9 +52,13 @@ Plugin 'tpope/vim-surround'
 call vundle#end()
 filetype plugin indent on
 
+" Theme
+set background=dark
+colorscheme gruvbox
+
 " Airline
 if !exists('g:airline_symbols')
-		let g:airline_symbols = {}
+                let g:airline_symbols = {}
 endif
 let g:airline_left_sep = ''
 let g:airline_left_alt_sep = ''
