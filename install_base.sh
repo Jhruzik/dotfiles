@@ -7,7 +7,7 @@ SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 mv $SCRIPT_DIR/config/* ~/.config/
 
 # Install Base Packages
-sudo dnf update
+sudo dnf update -y
 sudo dnf install -y git htop neovim tmux wget python3 python3-devel python3-pip \
         golang java-latest-openjdk nodejs npm docker-cli containerd docker-compose \
         protobuf zip newsboat dnf-plugins-core ca-certificates curl gnupg apt-transport-https
@@ -32,6 +32,9 @@ $HOME/Development/python-dev/bin/pip install numpy scipy sympy pandas polars \
 		fastapi[standard] langchain dash matplotlib seaborn pymongo \
 		scikit-learn Flask requests pynvim neovim \
 		build pytest setuptools ipython[terminal]
+
+# Install DuckDB
+curl https://install.duckdb.org | sh
 		
 # Configure Git
 read -p "Enter Name for Git: " NAMEGIT
@@ -42,5 +45,5 @@ git config --global core.editor "nvim"
 git config --global credential.useHttpPath true
 
 # Add Alias and Environment Variables to Profile
-printf "\n\n" >> $HOME/.bash_profile
-cat $SCRIPT_DIR/alias.txt >> $HOME/.bash_profile
+printf "\n\n" >> $HOME/.bashrc
+cat $SCRIPT_DIR/alias.txt >> $HOME/.bashrc
