@@ -35,6 +35,8 @@ $HOME/Development/python-dev/bin/pip install numpy scipy sympy pandas polars \
 
 # Install DuckDB
 curl https://install.duckdb.org | sh
+printf "\n\n" >> $HOME/.bashrc
+echo "export PATH='/home/$USER/.duckdb/cli/latest':$PATH" >> $HOME/.bashrc
 		
 # Configure Git
 read -p "Enter Name for Git: " NAMEGIT
