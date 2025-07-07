@@ -1,4 +1,3 @@
 # Set Alias
 alias python-dev=$HOME/Development/python-dev/bin/python
 alias ipython="$HOME/Development/python-dev/bin/python -m IPython --no-autoindent"
-alias sbt=/usr/local/sbt/bin/sbt
