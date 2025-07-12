@@ -8,7 +8,7 @@ font pango:monospace 12
 output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_2048x1536.png fill
 
 # Favorite Applications
-set $term alacritty
+set $term konsole
 set $menu fuzzel
 
 # Floating Modifier
