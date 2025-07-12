@@ -8,7 +8,7 @@ mv $SCRIPT_DIR/config/* ~/.config/
 
 # Install Base Packages
 sudo dnf update -y
-sudo dnf install -y git htop neovim tmux wget python3 python3-devel python3-pip \
+sudo dnf install -y git htop neovim tmux wget nmtui python3 python3-devel python3-pip \
         golang java-latest-openjdk nodejs npm docker-cli containerd docker-compose \
         protobuf zip newsboat dnf-plugins-core ca-certificates curl gnupg apt-transport-https
 		
