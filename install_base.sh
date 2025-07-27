@@ -16,7 +16,7 @@ sudo dnf install -y git htop neovim tmux wget nmtui python3 python3-devel python
 sudo rm -f /etc/yum.repos.d/bintray-rpm.repo
 curl -L https://www.scala-sbt.org/sbt-rpm.repo > sbt-rpm.repo
 sudo mv sbt-rpm.repo /etc/yum.repos.d/
-sudo dnf install sbt
+sudo dnf install -y sbt
 
 # Install Plugins
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.config/nvim/bundle/Vundle.vim
