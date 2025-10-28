@@ -1,0 +1,22 @@
+[
+  {
+    "context": "Workspace",
+    "bindings": {
+    }
+  },
+  {
+    "context": "Editor && vim_mode == insert",
+    "bindings": {
+    }
+  },
+  {
+     "context": "Terminal",
+     "bindings": {
+      "ctrl-w t": "terminal_panel::ToggleFocus",
+      "ctrl-w h": "workspace::ActivatePaneLeft",
+      "ctrl-w l": "workspace::ActivatePaneRight",
+      "ctrl-w k": "workspace::ActivatePaneUp",
+      "ctrl-w j": "workspace::ActivatePaneDown"
+     }
+   }
+]

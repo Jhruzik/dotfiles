@@ -1,0 +1,35 @@
+{
+  "disable_ai": true,
+  "relative_line_numbers": true,
+  "languages": {
+    "Dockerfile": {
+      "extend_comment_on_newline": false
+    },
+    "Python": {
+      "extend_comment_on_newline": false,
+      "language_servers": [
+        "!basedpyright",
+        "pyright"
+      ]
+    }
+  },
+  "title_bar": {
+    "show_onboarding_banner": false,
+    "show_user_picture": false,
+    "show_sign_in": false
+  },
+  "telemetry": {
+    "diagnostics": false,
+    "metrics": false
+  },
+  "format_on_save": "off",
+  "restore_on_startup": "none",
+  "vim_mode": true,
+  "ui_font_size": 16,
+  "buffer_font_size": 16,
+  "theme": {
+    "mode": "system",
+    "light": "One Light",
+    "dark": "Gruvbox Dark"
+  }
+}
