@@ -8,7 +8,7 @@
     "Python": {
       "extend_comment_on_newline": false,
       "language_servers": [
-        "!basedpyright",
+        "ruff",
         "pyright"
       ]
     }
