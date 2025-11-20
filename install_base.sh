@@ -30,7 +30,7 @@ python -m venv ~/Development/python-dev
 $HOME/Development/python-dev/bin/pip install --upgrade pip
 $HOME/Development/python-dev/bin/pip install numpy scipy sympy pandas polars \
 		fastapi[standard] langchain dash matplotlib seaborn pymongo \
-		scikit-learn Flask requests pynvim neovim \
+		scikit-learn torch torchvision torchtext Flask requests pynvim neovim \
 		build pytest setuptools ipython[terminal]
 
 # Install DuckDB
