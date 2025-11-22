@@ -18,5 +18,12 @@
       "ctrl-w k": "workspace::ActivatePaneUp",
       "ctrl-w j": "workspace::ActivatePaneDown"
      }
-   }
+   },
+   {
+      "context": "Editor && showing_completions",
+      "bindings": {
+        "enter": "editor::Newline",
+        "tab": "editor::ConfirmCompletion"
+      }
+    }
 ]
