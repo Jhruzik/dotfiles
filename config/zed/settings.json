@@ -1,16 +1,18 @@
 {
+  "auto_signature_help": true,
+  "show_signature_help_after_edits": true,
   "disable_ai": true,
-  "relative_line_numbers": true,
+  "relative_line_numbers": "enabled",
   "languages": {
     "Dockerfile": {
       "extend_comment_on_newline": false
     },
     "Python": {
       "extend_comment_on_newline": false,
-      "language_servers": [
-        "ruff",
-        "pyright"
-      ]
+      "language_servers": ["ruff", "pyright"]
+    },
+    "Scala": {
+      "extend_comment_on_newline": false
     }
   },
   "title_bar": {
