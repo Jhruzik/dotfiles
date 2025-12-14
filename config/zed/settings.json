@@ -13,6 +13,9 @@
     },
     "Scala": {
       "extend_comment_on_newline": false
+    },
+    "Go": {
+      "extend_comment_on_newline": false
     }
   },
   "title_bar": {
