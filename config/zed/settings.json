@@ -8,8 +8,7 @@
       "extend_comment_on_newline": false
     },
     "Python": {
-      "extend_comment_on_newline": false,
-      "language_servers": ["ruff", "pyright"]
+      "extend_comment_on_newline": false
     },
     "Scala": {
       "extend_comment_on_newline": false
