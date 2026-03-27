@@ -9,8 +9,9 @@ mv $SCRIPT_DIR/config/* ~/.config/
 # Install Base Packages
 sudo dnf update -y
 sudo dnf install -y git htop neovim tmux wget nmtui python3 python3-devel python3-pip \
-        golang java-latest-openjdk nodejs npm docker-cli containerd docker-compose texlive texlive-babel-german \
-        protobuf zip newsboat dnf-plugins-core ca-certificates curl gnupg apt-transport-https
+        typescript golang java-latest-openjdk nodejs npm rust cargo docker-cli containerd docker-compose \
+        protobuf zip newsboat dnf-plugins-core ca-certificates curl gnupg apt-transport-https \
+		texlive texlive-babel-german
 		
 # Install SBT
 sudo rm -f /etc/yum.repos.d/bintray-rpm.repo
@@ -23,6 +24,11 @@ git clone https://github.com/VundleVim/Vundle.vim.git ~/.config/nvim/bundle/Vund
 git clone https://github.com/tmux-plugins/tpm ~/.config/tmux/plugins/tpm
 nvim +PluginInstall +qall
 ~/.config/tmux/plugins/tpm/scripts/install_plugins.sh
+
+# Configure Docker
+sudo usermod -aG docker $USER
+sudo systemctl enable docker.service
+sudo systemctl enable containerd.service
 
 # Create Python Development Environment
 rm -rf ~/Development/python-dev
